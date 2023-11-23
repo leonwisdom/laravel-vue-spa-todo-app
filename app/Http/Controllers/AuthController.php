@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except([
-            'logout', 'dashboard'
+            'logout'
         ]);
     }
 
@@ -40,13 +40,13 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:250',
+            'username' => 'required|min:4|string|max:250|unique:users',
             'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8'
         ]);
 
         User::create([
-            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
@@ -54,8 +54,8 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('dashboard')
-        ->withSuccess('You have successfully registered & logged in!');
+
+        return redirect()->route('dashboard')->withSuccess('You have successfully registered & logged in!');
     }
 
     /**
@@ -93,30 +93,16 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard')
-                ->withSuccess('You have successfully logged in!');
+            return redirect()->route('dashboard')->withSuccess('You have successfully registered & logged in!');
         }
 
-        return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('email');
-    }
+        return Inertia::render('auth/login', [
+            'failed' => 'These credentials do not match any of our records!'
+        ]);
 
-    /**
-     * Display a dashboard to authenticated users.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            return Inertia::render('auth.dashboard');
-        }
-
-        return redirect()->route('login')
-            ->withErrors([
-                'email' => 'Please login to access the dashboard.',
-            ])->onlyInput('email');
+        // return back()->withErrors([
+        //     'email' => 'Your provided credentials do not match in our records.',
+        // ])->onlyInput('email');
     }
 
     /**
@@ -130,8 +116,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login')
-            ->withSuccess('You have logged out successfully!');
-        ;
+        return redirect()->route('login');
     }
 }

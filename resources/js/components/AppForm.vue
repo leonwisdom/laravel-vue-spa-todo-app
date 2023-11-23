@@ -54,8 +54,8 @@ configure({
     validateOnModelUpdate: true,
 });
 
-const handleSubmit = (formData, { resetForm }) => {
-    emit(handle.value.toString(), { formData: formData, resetForm: resetForm });
+const handleSubmit = (values, actions) => {
+    emit(handle.value.toString(), { formData: values, actions: actions });
 }
 
 </script>
