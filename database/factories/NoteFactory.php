@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,14 @@ class NoteFactory extends Factory
     {
         return [
             'title' => fake()->sentence(3),
-            'content' => fake()->paragraph(2),
-            'created_at' => fake()->dateTime(),
-            'update_at' => fake()->dateTime(),
-            'deleted_at' => fake()->dateTime(),
+            'body' => fake()->paragraph(2),
+            'user_id' => function () {
+                if ($user = User::inRandomOrder()->first()) {
+                    return $user->id;
+                }
+
+                return factory(User::class)->create()->id;
+            }
         ];
     }
 
