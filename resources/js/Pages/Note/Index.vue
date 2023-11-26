@@ -133,7 +133,7 @@ const submit = () => {
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">To-do List</h2>
         </template>
 
-        <Modal :show="isOpen" @close="closeModal">
+        <Modal :show="isOpen" @close="closeDeleteNoteModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                     Are you sure you want to delete your to-do: {{ form.title }}?
@@ -144,7 +144,7 @@ const submit = () => {
                 </p>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton class="me-auto" @click="closeModal">Cancel</SecondaryButton>
+                    <SecondaryButton class="me-auto" @click="closeDeleteNoteModal">Cancel</SecondaryButton>
 
                     <PrimaryButton class="ms-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                         @click="deleteNote">
@@ -155,7 +155,7 @@ const submit = () => {
         </Modal>
 
         <div class="pt-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
                 <h3 class="font-medium pb-5 text-lg tracking-tight text-gray-900 leading-tight">
                     Create Your To-Do's Here
                 </h3>
@@ -167,7 +167,7 @@ const submit = () => {
                                 <InputLabel for="title" value="Title" />
 
                                 <TextInput ref="myInput" id="title" type="text" class="mt-1 block w-full"
-                                    v-model="form.title" required autofocus autocomplete="username" />
+                                    v-model="form.title" placeholder="Enter Title" required autofocus autocomplete="username" />
 
                                 <InputError class="mt-2" :message="form.errors.title" />
                             </div>
@@ -175,7 +175,7 @@ const submit = () => {
                             <div class="mt-4">
                                 <InputLabel for="body" value="Body" />
 
-                                <TextAreaInput id="body" type="text" class="mt-1 block w-full" v-model="form.body" required
+                                <TextAreaInput id="body" type="text" class="mt-1 block w-full" v-model="form.body" placeholder="Enter Body" required
                                     autocomplete="body" />
 
                                 <InputError class="mt-2" :message="form.errors.body" />
@@ -199,8 +199,8 @@ const submit = () => {
             </div>
         </div>
 
-        <div class="pt-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="pt-3">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
                 <TextInput id="searchNotes" type="text" class="my-3 block w-full" v-model="input"
                     placeholder="Search Notes..." required autofocus autocomplete="username" />
 
