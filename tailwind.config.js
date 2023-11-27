@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -16,6 +17,13 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        // colors: {
+        //     gray: colors.gray,
+        //     neutral: colors.neutral,
+        //     black: colors.black,
+        //     white: colors.white,
+        //     blue: colors.blue,
+        // }
     },
 
     plugins: [forms],
