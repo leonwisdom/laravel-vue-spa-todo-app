@@ -15,11 +15,14 @@ cd laravel-vue-spa-todo-app
 composer install && yarn install 
 ```
 
-Use the package manager [yarn](https://yarnpkg.com/) to install dependancies.
+I was using the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 
 ## Usage
 
 ```node
+# Add config
+Rename .env.example to .env and add configs
+
 # run sail
 ./vendor/bin/sail up
 
@@ -27,7 +30,7 @@ Use the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 ./vendor/bin/sail stop
 ```
 
-Running the sail up command will start the migrate and seed the database, 
+Running the sail up command will start a fresh migrate, seed the database, 
 serve and start the vite dev server
 
 ## Contributing
