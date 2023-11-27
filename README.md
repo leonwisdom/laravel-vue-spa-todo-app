@@ -17,12 +17,22 @@ composer install && yarn install
 
 I was using the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 
+## Add config
+Rename .env.example to .env and add configs
+
 ## Usage
 
 ```node
-# Add config
-Rename .env.example to .env and add configs
+# Start server
+php artisan serve
 
+# Start vite
+yarn dev
+```
+
+## Sail
+
+```node
 # run sail
 ./vendor/bin/sail up
 
