@@ -20,7 +20,7 @@ I was using the package manager [yarn](https://yarnpkg.com/) to install dependan
 ## Add config
 Rename .env.example to .env
 
-## Run sail
+## Running sail
 Running the sail up command will start the artisan serve command and the vite dev server.
 ```node
 # run sail
@@ -38,7 +38,7 @@ The mailpit interface will be available at the following address:
 ```
 http://localhost:8025
 ```
-## Stop sail
+## Stopping sail
 
 ```
 ./vendor/bin/sail stop
