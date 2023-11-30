@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Note extends Model
@@ -22,13 +21,13 @@ class Note extends Model
     }
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array<int, string>
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'title',
         'body',
-        'user_id'
+        'user_id',
     ];
 }

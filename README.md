@@ -18,30 +18,31 @@ composer install && yarn install
 I was using the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 
 ## Add config
-Rename .env.example to .env and add configs
+Rename .env.example to .env
 
-## Usage
-
-```node
-# Start server
-php artisan serve
-
-# Start vite
-yarn dev
-```
-
-## Sail
-
+## Run sail
+Running the sail up command will start the artisan serve command and the vite dev server.
 ```node
 # run sail
 ./vendor/bin/sail up
 
-# stop sail
-./vendor/bin/sail stop
+# run migration
+./vendor/bin/sail artisan migrate:fresh
+
+# run seeders
+./vendor/bin/sail artisan db:seed
 ```
 
-Running the sail up command will start a fresh migrate, seed the database, 
-serve and start the vite dev server
+## Accessing mailpit
+The mailpit interface will be available at the following address: 
+```
+http://localhost:8025
+```
+## Stop sail
+
+```
+./vendor/bin/sail stop
+```
 
 ## Contributing
 

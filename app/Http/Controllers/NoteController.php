@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
-use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class NoteController extends Controller
 {
@@ -40,19 +40,19 @@ class NoteController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'title' => 'required|min:4|string|max:250|unique:' . Note::class,
+            'title' => 'required|min:4|string|max:250|unique:'.Note::class,
             'body' => 'required|min:4|string',
         ]);
 
         Note::create([
             'title' => $request->title,
             'body' => $request->body,
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
 
         return Redirect::route('note.index')->with([
             'type' => 'success',
-            'message' => 'Note ' . $request->title . ' created successfully',
+            'message' => 'Note '.$request->title.' created successfully',
         ]);
     }
 
@@ -62,7 +62,7 @@ class NoteController extends Controller
     public function edit(Note $note)
     {
         return Inertia::render('note.edit', [
-            'note' => $note
+            'note' => $note,
         ]);
     }
 
@@ -76,19 +76,19 @@ class NoteController extends Controller
         ];
 
         if ($note->title !== $request->title) {
-            $validators['title'] = 'required|min:4|string|max:250|unique:' . Note::class;
+            $validators['title'] = 'required|min:4|string|max:250|unique:'.Note::class;
         }
 
         $request->validate($validators);
 
         $note->update([
             'title' => $request->title,
-            'body' => $request->body
+            'body' => $request->body,
         ]);
 
         return Redirect::route('note.index')->with([
             'type' => 'success',
-            'message' => 'Note ' . $note->title . ' updated successfully',
+            'message' => 'Note '.$note->title.' updated successfully',
         ]);
     }
 
@@ -98,7 +98,7 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         return Inertia::render('note.show', [
-            'note' => $note
+            'note' => $note,
         ]);
     }
 
@@ -111,7 +111,7 @@ class NoteController extends Controller
 
         return Redirect::route('note.index')->with([
             'type' => 'success',
-            'message' => 'Note ' . $note->title . ' deleted successfully',
+            'message' => 'Note '.$note->title.' deleted successfully',
         ]);
     }
 
@@ -125,7 +125,7 @@ class NoteController extends Controller
 
         return Redirect::route('note.index')->with([
             'type' => 'success',
-            'message' => 'Note ' . $note->title . ' restored successfully',
+            'message' => 'Note '.$note->title.' restored successfully',
         ]);
     }
 }

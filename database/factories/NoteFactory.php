@@ -26,7 +26,7 @@ class NoteFactory extends Factory
                 }
 
                 return factory(User::class)->create()->id;
-            }
+            },
         ];
     }
 
