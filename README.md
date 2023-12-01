@@ -2,7 +2,7 @@
 
 Simpe To-Do CRUD app
 
-## Get project
+## Project
 
 ```bash
 git clone git@gitlab.com:leonwisdom/laravel-vue-spa-todo-app.git
@@ -17,13 +17,13 @@ composer install && yarn install
 
 I was using the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 
-## Add config
+## Config
 Make the .env file
 ```
 cp .env.example .env
 ```
 
-## Running sail
+## Run Sail
 Running the sail up command will start the artisan serve command and the vite dev server.
 ```node
 # run sail
@@ -41,12 +41,12 @@ email: example@example.com
 password: example
 ```
 
-## Accessing mailpit
+## Access Mailpit
 The mailpit interface will be available at the following address: 
 ```
 http://localhost:8025
 ```
-## Stopping sail
+## Stop Sail
 
 ```
 ./vendor/bin/sail stop
