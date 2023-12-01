@@ -1,6 +1,6 @@
-# Laravel, Inertia + Vue and Sail
+# Laravel, Inertia + Vue, Breeze and Sail
 
-Simpe To-Do CRUD app writen using Laravel, Inertia + Vue and Sail
+Simpe To-Do CRUD app
 
 ## Get project
 
