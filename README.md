@@ -18,7 +18,10 @@ composer install && yarn install
 I was using the package manager [yarn](https://yarnpkg.com/) to install dependancies.
 
 ## Add config
-Rename .env.example to .env
+Make the .env file
+```
+cp .env.example .env
+```
 
 ## Running sail
 Running the sail up command will start the artisan serve command and the vite dev server.
@@ -31,6 +34,11 @@ Running the sail up command will start the artisan serve command and the vite de
 
 # run seeders
 ./vendor/bin/sail artisan db:seed
+```
+A default user will be created for you incase you dont want to register, the login details are:
+```
+email: example@example.com
+password: example
 ```
 
 ## Accessing mailpit
